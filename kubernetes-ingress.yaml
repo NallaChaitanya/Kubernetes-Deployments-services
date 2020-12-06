@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1 # for versions before 1.14 use extensions/v1beta1
+kind: Ingress
+metadata:
+   name: example-ingress
+   namespace: ingress-nginx
+spec:
+   rules:
+   - host: openfaas-figlet.local
+     http:
+       paths:
+       - path: /
+         backend:
+           serviceName: mongo-express-service
+           servicePort: 80
